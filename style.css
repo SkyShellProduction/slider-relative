@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-style: normal;
+    font-family: "Arial"
+}
+
+.container {
+    max-width: 1140px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px
+}
+
+img {
+    width: 100%;
+    display: block;
+    -o-object-fit: cover;
+    object-fit: cover;
+    pointer-events: none
+}
+
+.slider {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden
+}
+
+.slider__lines {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition-property: transform;
+    z-index: 1;
+    display: flex
+}
+
+.slider__item {
+    width: 100%;
+    padding-right: 30px;
+    position: relative;
+    transition-property: transform;
+    flex-shrink: 0
+}
+
+.slider__buttons {
+    display: flex;
+    justify-content: center
+}
+
+.slider__prev,
+.slider__next {
+    cursor: pointer;
+    display: block;
+    padding: 15px 35px;
+    font-size: 22px;
+    text-transform: uppercase
+}
+
+.slider__pagination {
+    display: flex;
+    padding: 10px 15px;
+    position: absolute;
+    bottom: 80px;
+    z-index: 10;
+    margin: 0 auto;
+    justify-content: center;
+    left: 0;
+    right: 0
+}
+
+.slider__pagination li {
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    margin: 0 7px;
+    background: #fff
+}
+
+.slider__pagination li.active {
+    background: red
+}
+
+.card__block {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    align-items: flex-start;
+    flex-wrap: wrap
+}
+
+.card__img {
+    max-width: 700px;
+    width: 100%;
+    flex-shrink: 0
+}
+
+.card__text {
+    padding-top: 30px
+}
+
+.card__title {
+    font-size: 36px;
+    text-transform: uppercase;
+    margin-bottom: 30px
+}
+
+.card__descr {
+    font-size: 20px;
+    line-height: 24px;
+    text-align: justify
+}
+
+.box {
+    max-width: 750px
+}
+
+@media(max-width: 1035px) {
+    .card__img {
+        max-width: 400px
+    }
+}

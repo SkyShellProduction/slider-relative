@@ -17,7 +17,7 @@
 
 >html
 ```
-            <div class="slider slider2">
+            <div class="slider">
                 <div class="slider__true-size">
                     <div class="slider__lines">
                         <div class="slider__item">
@@ -40,4 +40,34 @@
                     <button class="slider__next">next</button>
                 </div>
             </div>
+```
+>css
+```
+.slider {
+    user-select: none;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden
+}
+.slider img {
+    display: block;
+    pointer-events: none;
+}
+.slider__lines {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition-property: transform;
+    z-index: 1;
+    display: flex
+}
+
+.slider__item {
+    padding-right: 30px; /*may change*/
+    position: relative;
+    transition-property: transform;
+    flex-shrink: 0;
+}
 ```

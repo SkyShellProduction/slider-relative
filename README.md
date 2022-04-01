@@ -15,7 +15,7 @@
 - you can write breakpoints to change some values on resize
 ### simple example
 
->html
+## >html
 ```
             <div class="slider">
                 <div class="slider__true-size">
@@ -41,7 +41,7 @@
                 </div>
             </div>
 ```
->css
+## >css
 ```
 .slider {
     user-select: none;

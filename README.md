@@ -1,6 +1,6 @@
 ## Own Simple Slider by vanilla JavaScript
 > Possibilities
-- works bytouch
+- works by touch
 - works by mouse
 - you can use only pagination
 - you can use only prev, next buttons

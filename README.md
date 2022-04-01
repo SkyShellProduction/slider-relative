@@ -13,9 +13,9 @@
 - you can use how much slides are moving
 - you can write classes fro slider, sliderLines and sliderItems
 - you can write breakpoints to change some values on resize
-### simple example
+## simple example
 
-## >html
+## html
 ```
             <div class="slider">
                 <div class="slider__true-size">
@@ -41,7 +41,7 @@
                 </div>
             </div>
 ```
-## >css
+## css
 ```
 .slider {
     user-select: none;

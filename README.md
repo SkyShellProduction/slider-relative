@@ -16,6 +16,7 @@
 ### simple example
 
 >html
+```
             <div class="slider slider2">
                 <div class="slider__true-size">
                     <div class="slider__lines">
@@ -39,3 +40,4 @@
                     <button class="slider__next">next</button>
                 </div>
             </div>
+```

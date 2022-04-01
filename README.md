@@ -71,3 +71,24 @@
     flex-shrink: 0;
 }
 ```
+## JS
+```
+//you can change all of them
+const mySlider = new Slider({
+    slider: ".slider",
+    sliderLines: ".slider__lines",
+    sliderItem: ".slider__item",
+    duration: 200,
+    direction: "x",
+    active: 0,
+    pagination: true,
+    slidesToMove: 1,
+    buttons: true,
+    slidesToShow: 2,
+    breakpoints: {
+        720: {
+            slidesToShow: 1
+        }
+    }
+});       
+```

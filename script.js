@@ -12,7 +12,8 @@ class Slider {
         slidesToMove = 1,
         slidesToShow = 1,
         autoplayTime = 5000,
-        breakpoints
+        breakpoints,
+        margin = 0
     }) {
         this.slider =
             typeof slider == "string" ? document.querySelector(slider) : slider;
@@ -24,7 +25,7 @@ class Slider {
             typeof sliderItem == "string"
                 ? [...this.slider.querySelectorAll(sliderItem)]
                 : sliderItem;
-        this.duration = duration;
+        this.duration = duration >= 0 ? duration : 400;
         this.direction = direction.toUpperCase();
         this.active = active;
         this.buttons = buttons;
@@ -35,7 +36,7 @@ class Slider {
         this.autoplay = autoplay;
         this.autoplayTime = autoplayTime;
         this.slidesToMove = slidesToMove;
-
+        this.margin = margin;
         if (this.slidesToMove >= this.sliderItems.length || this.slidesToMove <= 0) {
             this.slidesToMove = 1;
             alert(`Ля ты крыса, используй меньшее число для прокрутки слайдов за раз`);
@@ -51,7 +52,6 @@ class Slider {
         for (const key in this) {
             this.copySlider[key] = this[key];
         }
-        console.log(this.slidesToShow);
         this.interval;
         if (this.buttons) {
             this.prev = this.slider.querySelector(".slider__prev");
@@ -83,6 +83,7 @@ class Slider {
         this.slider.style.overflow = "hidden";
         this.sliderLines.style.overflow = "hidden";
         this.sliderLines.style.display = "flex";
+        this.sliderTrueSize.style.overflow = 'hidden';
         if (this.breakpoints) {
             let sorting = (a, b) => a - b;
             let keys = Object.keys(this.breakpoints).sort(sorting).reverse();
@@ -101,17 +102,22 @@ class Slider {
            }
         }
         this.sliderItems.forEach(item => {
-            item.style.width = this.sliderTrueSize.offsetWidth / this.slidesToShow + 'px';
+            if(this.direction == 'Y') {
+                item.style.paddingBottom = this.margin + 'px';
+                item.style.width = this.sliderTrueSize.offsetWidth+'px';
+            }
+            else {
+                item.style.width = this.sliderTrueSize.offsetWidth / this.slidesToShow + 'px';
+                item.style.paddingRight = this.margin + 'px';
+            }
         })
-        let commonWidth = this.sliderItems.reduce((acc, item) => acc + item.offsetWidth, 0);
-        let commonHeight = this.sliderItems.reduce((acc, item) => acc + item.offsetHeight, 0);
-        this.sliderTrueSize.style.overflow = 'hidden';
+       
         if (this.direction == 'Y') {
             this.sliderLines.style.flexDirection = 'column';
-            this.sliderTrueSize.style.height = this.sliderItems[this.active].offsetHeight + 'px';
-            this.sliderLines.style.height = commonHeight + "px";
+            this.sliderTrueSize.style.height = this.sliderItems[this.active].offsetHeight * this.slidesToShow + 'px';
+            this.sliderLines.style.height = this.sliderLines.scrollHeight + "px";
         }
-        else this.sliderLines.style.width = commonWidth + "px";
+        else this.sliderLines.style.width = this.sliderLines.scrollWidth + "px";
 
         this.sliderLines.style.transition = `${this.duration}ms`;
         this.sliderLines.style.transform = `translate${this.direction}(${-this.slidesToMoving()}px)`;
@@ -137,8 +143,7 @@ class Slider {
     slidesToMoving() {
         let limit = this.sliderItems[this.active].offsetWidth;
         let limit2 = this.sliderItems[this.active].offsetHeight;
-        if (this.direction == 'Y') return limit2 * this.active;
-        else return limit * this.active;
+        return (this.direction == 'Y') ? limit2 * this.active : limit * this.active;
     }
     setClass() {
         this.sliderItems.forEach((item, i) => {
@@ -221,16 +226,21 @@ const mySlider = new Slider({
     sliderLines: ".slider__lines",
     sliderItem: ".slider__item",
     duration: 200,
-    direction: "x",
+    direction: "y",
     active: 0,
     pagination: true,
     slidesToMove: 1,
     buttons: true,
-    slidesToShow: 2,
+    slidesToShow: 3,
+    margin: 30,
     breakpoints: {
         720: {
-            slidesToShow: 1
+            slidesToShow: 2,
+            margin: 15
+        },
+        420: {
+            slidesToShow: 1.3,
+            margin: 30
         }
     }
 });
-

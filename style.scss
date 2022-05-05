@@ -39,11 +39,9 @@ img{
     }
     &__item{
         width: 480px;
-        padding-right: 30px;
         position: relative;
         transition-property: transform;
         flex-shrink: 0;
-        // transform: r;
     }
     &__buttons{
         display: flex;
